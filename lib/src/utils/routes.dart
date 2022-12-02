@@ -1,4 +1,4 @@
-import 'package:devfest/src/screens/home/home.dart';
+import 'package:devfest/src/screens/home.dart';
 import 'package:flutter/cupertino.dart';
 
 typedef PageRouteResolver = PageRoute Function();

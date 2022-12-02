@@ -5,6 +5,8 @@ import 'package:devfest/src/utils/assets.dart';
 class CitiesGenerator extends AssetsGenerator {
   static const _filterWord = 'city';
 
+  const CitiesGenerator();
+
   @override
   List<AppAssetDTO> getAssetItems() => AppAssetImage.values
       .where(

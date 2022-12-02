@@ -33,14 +33,15 @@ enum AppThemes {
         ),
       );
 
-  static EdgeInsets bodyContentPadding(BuildContext context) =>
-      EdgeInsets.symmetric(
-        horizontal: 3.widthFraction(context),
-      );
+  static double bodyHorizontalPadding(BuildContext context) =>
+      10.adaptedPx(context);
 
   static double navbarHeight(BuildContext context) =>
       MediaQuery.of(context).padding.top;
 
   static double bottomInset(BuildContext context) =>
       MediaQuery.of(context).padding.bottom;
+
+  static double bottomPadding(BuildContext context) =>
+      bottomInset(context) + 10.adaptedPx(context);
 }

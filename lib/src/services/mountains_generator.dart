@@ -5,6 +5,8 @@ import 'package:devfest/src/utils/assets.dart';
 class MountainsGenerator extends AssetsGenerator {
   static const _filterWord = 'mountain';
 
+  const MountainsGenerator();
+
   @override
   List<AppAssetDTO> getAssetItems() => AppAssetImage.values
       .where(

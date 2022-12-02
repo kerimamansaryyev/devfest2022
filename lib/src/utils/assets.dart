@@ -12,7 +12,7 @@ enum AppAssetImage implements AppAssetInterface {
   mountain1('$_generalPath/mountains/mountain1.webp'),
   mountain2('$_generalPath/mountains/mountain2.webp'),
   mountain3('$_generalPath/mountains/mountain3.jpg'),
-  mountain4('$_generalPath/mountains/mountain4.png'),
+  mountain4('$_generalPath/mountains/mountain4.jpg'),
   mountain5('$_generalPath/mountains/mountain5.jpg'),
   mountain6('$_generalPath/mountains/mountain6.jpeg');
 
