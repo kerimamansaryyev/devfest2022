@@ -1,4 +1,5 @@
 import 'package:adaptix/adaptix.dart';
+import 'package:devfest/src/utils/responsive_constraints/my_adaptive_constraint.dart';
 import 'package:devfest/src/utils/routes.dart';
 import 'package:devfest/src/utils/theme/theme.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,7 +20,10 @@ class _StockTestState extends State<DevfestApp> {
   @override
   Widget build(BuildContext context) {
     return AdaptixInitializer(
-      configs: const AdaptixConfigs.canonical(),
+      configs: AdaptixConfigs(
+        breakpoints: MyResponsiveConstraint.breakpoints,
+        pixelScaleRules: MyResponsiveConstraint.pixelScaleRules,
+      ),
       builder: (context) => CupertinoApp(
         theme: AppThemes.light.resolve(context),
         locale: const Locale('en'),

@@ -1,6 +1,7 @@
 import 'package:adaptix/adaptix.dart';
 import 'package:devfest/src/models/asset.dart';
 import 'package:devfest/src/services/asset_generator.dart';
+import 'package:devfest/src/utils/responsive_constraints/my_adaptive_constraint.dart';
 import 'package:devfest/src/widget_components/asset_builder.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -47,9 +48,16 @@ class _AssetsListWidgetState extends State<AssetsListWidget> {
               childCount: _assets.length,
             ),
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              //TODO: change cross axis count
               childAspectRatio: 1,
-              crossAxisCount: 2,
+              crossAxisCount: context.responsiveSwitch(
+                MyResponsiveConstraint.createArguments(
+                  defaultValue: 2,
+                  rules: {
+                    MyResponsiveConstraint.tablet: 3,
+                    MyResponsiveConstraint.desktop: 5,
+                  },
+                ),
+              ),
               mainAxisSpacing: spacing,
               crossAxisSpacing: spacing,
             ),

@@ -1,4 +1,8 @@
+import 'package:adaptix/adaptix.dart';
+import 'package:devfest/src/utils/responsive_constraints/my_adaptive_constraint.dart';
+import 'package:devfest/src/widget_components/tabview/form_factors/desktop.dart';
 import 'package:devfest/src/widget_components/tabview/form_factors/phone.dart';
+import 'package:devfest/src/widget_components/tabview/form_factors/tablet.dart';
 import 'package:devfest/src/widget_components/tabview/tab.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -23,12 +27,29 @@ class _AppTabViewState extends State<AppTabView> {
 
   @override
   Widget build(BuildContext context) {
-    //TODO: build responsive switch here
-    return PhoneTabViewBuilder(
-      tabs: widget.tabs,
-      selectedTabIndexNotifier: _selectedTabIndexNotifier,
-      pageView: _buildPageView(),
-      selectTabIndexCallback: _selectTabIndex,
+    return context.responsiveSwitch<Widget>(
+      MyResponsiveConstraint.createArguments(
+        defaultValue: PhoneTabViewBuilder(
+          tabs: widget.tabs,
+          selectedTabIndexNotifier: _selectedTabIndexNotifier,
+          pageView: _buildPageView(),
+          selectTabIndexCallback: _selectTabIndex,
+        ),
+        rules: {
+          MyResponsiveConstraint.tablet: TabletTabViewBuilder(
+            tabs: widget.tabs,
+            selectedTabIndexNotifier: _selectedTabIndexNotifier,
+            pageView: _buildPageView(),
+            selectTabIndexCallback: _selectTabIndex,
+          ),
+          MyResponsiveConstraint.desktop: DesktopTabBuilder(
+            tabs: widget.tabs,
+            selectedTabIndexNotifier: _selectedTabIndexNotifier,
+            pageView: _buildPageView(),
+            selectTabIndexCallback: _selectTabIndex,
+          )
+        },
+      ),
     );
   }
 
